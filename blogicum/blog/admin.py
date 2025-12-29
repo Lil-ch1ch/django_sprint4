@@ -2,6 +2,15 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Category, Location, Post, Comment
+<<<<<<< HEAD
+=======
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth import get_user_model 
+
+User = get_user_model()
+if not admin.site.is_registered(User):
+    admin.site.register(User, UserAdmin)
+>>>>>>> 3ba034c (Initial commit)
 
 class PostInline(admin.StackedInline):
     model = Post
@@ -15,6 +24,10 @@ class PostInline(admin.StackedInline):
     image_preview.allow_tags= True
     image_preview.short_description="Предпросмотр"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ba034c (Initial commit)
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("title", "is_published", "created_at", "slug")
@@ -24,6 +37,10 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     inlines = (PostInline,)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ba034c (Initial commit)
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ("name", "is_published", "created_at")
@@ -32,6 +49,10 @@ class LocationAdmin(admin.ModelAdmin):
     search_fields = ("name",)
     inlines = (PostInline,)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ba034c (Initial commit)
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = (
@@ -82,4 +103,8 @@ class PostAdmin(admin.ModelAdmin):
             obj.author = request.user
         super().save_model(request, obj, form, change)
 
+<<<<<<< HEAD
 admin.site.register(Comment)
+=======
+admin.site.register(Comment)
+>>>>>>> 3ba034c (Initial commit)
